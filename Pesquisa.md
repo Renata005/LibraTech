@@ -1,8 +1,8 @@
-# Relatório Técnico - LibraTech
+# Desafio Técnico de Pesquisa
 
 ## Introdução
 
-Antes de continuar o desenvolvimento do sistema da LibraTech, foi realizada uma pesquisa sobre as principais tecnologias utilizadas no projeto. O objetivo é entender como essas ferramentas funcionam e identificar os motivos pelos quais elas foram escolhidas para o desenvolvimento da aplicação.
+Durante o desenvolvimento de aplicações utilizando ASP.NET Core MVC, Entity Framework Core e SQLite, é importante entender como essas tecnologias funcionam internamente. Além de criar telas e implementar funcionalidades, compreender a arquitetura da aplicação facilita a manutenção do sistema e torna o desenvolvimento mais eficiente.
 
 ---
 
@@ -10,9 +10,9 @@ Antes de continuar o desenvolvimento do sistema da LibraTech, foi realizada uma 
 
 ## O que é Injeção de Dependência?
 
-A Injeção de Dependência (Dependency Injection - DI) é um recurso do ASP.NET Core que permite que objetos sejam fornecidos automaticamente para outras classes da aplicação.
-No projeto da LibraTech, por exemplo, os Controllers precisam acessar o banco de dados através do Entity Framework. Em vez de criar uma instância manualmente do contexto, o próprio ASP.NET Core fornece essa dependência.
-Essa abordagem torna o código mais organizado, facilita a manutenção e reduz o acoplamento entre as classes.
+A Injeção de Dependência (Dependency Injection - DI) é um recurso do ASP.NET Core responsável por fornecer automaticamente objetos e serviços para as classes da aplicação.
+Em vez de criar manualmente uma conexão com o banco de dados dentro de um Controller, por exemplo, o próprio framework é responsável por fornecer essa dependência.
+Isso deixa o código mais organizado, reduz o acoplamento entre as classes e facilita futuras manutenções.
 
 ---
 
@@ -20,22 +20,22 @@ Essa abordagem torna o código mais organizado, facilita a manutenção e reduz 
 
 ### Transient
 
-No ciclo de vida Transient, uma nova instância do serviço é criada toda vez que ele é solicitado.
-É indicado para serviços simples e que não precisam compartilhar informações entre chamadas.
+No ciclo de vida Transient, uma nova instância do serviço é criada toda vez que ele é solicitada.
+Esse tipo é recomendado para serviços simples e que não precisam compartilhar informações.
 
 ### Scoped
 
-No ciclo Scoped, uma única instância é criada durante toda a requisição do usuário.
-Esse é o ciclo normalmente utilizado pelo Entity Framework, pois cada requisição trabalha com seu próprio contexto de banco de dados.
+No Scoped, uma única instância é criada durante toda a requisição do usuário.
+Esse é o ciclo normalmente utilizado pelo Entity Framework Core, pois cada requisição trabalha com seu próprio contexto do banco de dados.
 
 ### Singleton
 
 No Singleton, apenas uma instância é criada e compartilhada por toda a aplicação.
-Esse tipo é recomendado para serviços de configuração e cache.
+É indicado para serviços que armazenam configurações ou dados em cache.
 
 ### Por que o banco de dados não deve ser Singleton?
 
-Se várias requisições utilizarem o mesmo contexto ao mesmo tempo, podem ocorrer problemas de concorrência, inconsistência dos dados e falhas de desempenho. Por esse motivo, o DbContext normalmente é registrado como Scoped.
+Como várias requisições poderiam utilizar o mesmo contexto simultaneamente, poderiam ocorrer problemas de concorrência, conflitos e inconsistências nos dados. Por esse motivo, o DbContext geralmente é registrado como Scoped.
 
 ---
 
@@ -43,39 +43,45 @@ Se várias requisições utilizarem o mesmo contexto ao mesmo tempo, podem ocorr
 
 ## O que é uma ORM?
 
-ORM (Object Relational Mapping) é uma tecnologia responsável por fazer a ligação entre as classes do sistema e as tabelas do banco de dados.
-Com o Entity Framework Core, não é necessário escrever manualmente comandos SQL para criar tabelas ou realizar operações básicas de inserção, alteração e exclusão de registros.
-Isso torna o desenvolvimento mais rápido e facilita a manutenção do projeto.
+ORM (Object Relational Mapping) é uma tecnologia que faz a ligação entre os objetos criados em uma linguagem de programação e as tabelas do banco de dados.
+No caso do Entity Framework Core, as classes desenvolvidas em C# podem ser transformadas automaticamente em tabelas, sem a necessidade de escrever manualmente comandos SQL para criação e manipulação dos dados.
+
+### Vantagens
+
+* Maior produtividade;
+* Menor quantidade de código SQL manual;
+* Facilidade de manutenção;
+* Código mais organizado;
+* Maior integração com o C#.
 
 ---
 
-## O que é Code-First?
+## O que significa trabalhar com Code-First?
 
-Code-First é uma abordagem em que o banco de dados é criado a partir das classes desenvolvidas em C#.
-Primeiro são criadas as entidades da aplicação e, posteriormente, o Entity Framework é responsável por gerar as tabelas automaticamente.
-Essa estratégia facilita a evolução do sistema, já que as alterações realizadas nas classes podem ser refletidas no banco através das migrations.
+Na abordagem Code-First, o banco de dados é criado a partir das classes desenvolvidas no projeto.
+Primeiro são criadas as entidades em C#, e depois o Entity Framework Core é responsável por gerar as tabelas correspondentes no banco de dados.
+Essa abordagem facilita alterações futuras e permite que a estrutura do banco acompanhe a evolução do sistema.
 
 ---
 
 ## Como funcionam as Migrations?
 
-As migrations são responsáveis por registrar as alterações realizadas nas entidades do sistema.
+As Migrations são responsáveis por registrar as alterações realizadas nas entidades.
 Quando executamos:
 
 ```bash
 dotnet ef migrations add InitialCreate
 ```
 
-o Entity Framework gera arquivos contendo as mudanças necessárias para atualizar o banco.
-Depois, ao executar:
+o Entity Framework gera arquivos contendo as modificações necessárias.
+Posteriormente, ao executar:
 
 ```bash
 dotnet ef database update
 ```
 
-o EF Core verifica quais migrations já foram aplicadas anteriormente através da tabela `__EFMigrationsHistory`.
-
-Dessa forma, somente as alterações ainda não executadas são aplicadas ao banco de dados, mantendo a estrutura sempre sincronizada com o código.
+o EF Core verifica uma tabela interna chamada `__EFMigrationsHistory`, que registra quais migrations já foram aplicadas anteriormente.
+Assim, apenas as alterações que ainda não foram executadas são aplicadas ao banco de dados.
 
 ---
 
@@ -83,33 +89,29 @@ Dessa forma, somente as alterações ainda não executadas são aplicadas ao ban
 
 ## Vantagens do SQLite
 
-Durante o desenvolvimento da LibraTech, o SQLite apresenta diversas vantagens:
+O SQLite é bastante utilizado em ambientes de desenvolvimento e testes devido às seguintes características:
+* Instalação simples;
+* Não necessita de servidor;
+* Armazena os dados em um único arquivo;
+* Baixo consumo de recursos;
 * Fácil configuração;
-* Não necessita de servidor dedicado;
-* Utiliza apenas um arquivo `.db`;
-* Consome poucos recursos;
-* É ideal para testes e projetos menores;
-* Facilita o desenvolvimento e a distribuição da aplicação.
+* Ideal para projetos pequenos e protótipos.
 
-Por esses motivos, é bastante utilizado em ambientes de desenvolvimento e prototipação.
+Essas características tornam o SQLite uma boa escolha para ambientes acadêmicos e para as fases iniciais de um projeto.
 
 ---
 
-## Limitações do SQLite
+## Qual é a principal limitação do SQLite?
 
-Apesar das vantagens, o SQLite possui limitações quando a quantidade de usuários cresce.
-Como todas as informações são armazenadas em um único arquivo, muitas operações de escrita simultâneas podem gerar gargalos e diminuir o desempenho da aplicação.
-Em cenários com grande quantidade de acessos, podem ocorrer:
-* Lentidão;
-* Filas de escrita;
-* Bloqueios temporários do banco;
-* Redução do desempenho geral.
+O principal ponto fraco do SQLite está relacionado à concorrência.
+Como o banco é armazenado em um único arquivo, muitas operações de escrita simultâneas podem causar bloqueios e perda de desempenho.
+Em sistemas com muitos usuários realizando gravações ao mesmo tempo, podem ocorrer filas de escrita e redução da performance da aplicação.
 
 ---
 
 ## Quando migrar para PostgreSQL ou SQL Server?
 
-À medida que a aplicação cresce e o número de usuários aumenta, torna-se necessário utilizar bancos de dados mais robustos.
+Quando a aplicação cresce e passa a ter muitos usuários, torna-se necessário utilizar bancos de dados mais robustos.
 Soluções como PostgreSQL e SQL Server oferecem:
 * Melhor desempenho;
 * Maior capacidade de processamento;
@@ -117,21 +119,17 @@ Soluções como PostgreSQL e SQL Server oferecem:
 * Maior escalabilidade;
 * Recursos avançados de segurança e disponibilidade.
 
-Por esse motivo, são mais indicados para aplicações em produção e sistemas que precisam atender um grande número de usuários simultaneamente.
+Por esse motivo, são mais adequados para aplicações em produção e sistemas que precisam atender muitos usuários simultaneamente.
 
 ---
 
 # Conclusão
 
-O ASP.NET Core, juntamente com o Entity Framework Core e o SQLite, fornece uma base sólida para o desenvolvimento da plataforma LibraTech. Recursos como Injeção de Dependência e Migrations tornam o código mais organizado e facilitam sua manutenção.
-O SQLite atende muito bem durante as fases iniciais do projeto, porém, conforme a plataforma evoluir e o número de usuários aumentar, será necessário migrar para uma solução mais robusta, como PostgreSQL ou SQL Server, garantindo melhor desempenho e escalabilidade.
+ASP.NET Core, Entity Framework Core e SQLite formam uma combinação bastante eficiente para o desenvolvimento de aplicações. Recursos como Injeção de Dependência, ORM e Migrations tornam o código mais organizado e aceleram o desenvolvimento.
+Embora o SQLite seja uma excelente opção para desenvolvimento e testes, aplicações maiores e com muitos acessos simultâneos podem exigir a utilização de bancos de dados mais robustos, como PostgreSQL ou SQL Server.
 
 ---
 
 ## Autor
 
-Renata Santana Lopes
-
-Curso de Sistemas de Informação
-
-Projeto LibraTech
+Renata Santana Lopes/Sistemas de Informação
