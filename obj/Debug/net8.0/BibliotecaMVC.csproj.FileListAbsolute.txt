@@ -13,6 +13,7 @@ C:\Users\Renata Santana\Documents\BibliotecaMVC\obj\Debug\net8.0\BibliotecaMVC.c
 C:\Users\Renata Santana\Documents\BibliotecaMVC\obj\Debug\net8.0\BibliotecaMVC.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Renata Santana\Documents\BibliotecaMVC\obj\Debug\net8.0\BibliotecaMVC.RazorAssemblyInfo.cache
 C:\Users\Renata Santana\Documents\BibliotecaMVC\obj\Debug\net8.0\BibliotecaMVC.RazorAssemblyInfo.cs
+C:\Users\Renata Santana\Documents\BibliotecaMVC\obj\Debug\net8.0\BibliotecaMVC.sourcelink.json
 C:\Users\Renata Santana\Documents\BibliotecaMVC\obj\Debug\net8.0\staticwebassets.build.json
 C:\Users\Renata Santana\Documents\BibliotecaMVC\obj\Debug\net8.0\staticwebassets.development.json
 C:\Users\Renata Santana\Documents\BibliotecaMVC\obj\Debug\net8.0\staticwebassets\msbuild.BibliotecaMVC.Microsoft.AspNetCore.StaticWebAssets.props
