@@ -1,0 +1,121 @@
+@model IEnumerable<LibraTech.Models.Emprestimo>
+
+@{
+    ViewData["Title"] = "Empréstimos";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+
+    <h1 class="fw-bold">
+        📖 Gerenciamento de Empréstimos
+    </h1>
+
+    <a asp-action="Create" class="btn btn-primary btn-lg">
+        + Novo Empréstimo
+    </a>
+
+</div>
+
+<table class="table table-hover shadow rounded overflow-hidden">
+
+    <thead class="table-dark">
+
+        <tr>
+
+            <th>Livro</th>
+
+            <th>Usuário</th>
+
+            <th>Data Empréstimo</th>
+
+            <th>Data Devolução</th>
+
+            <th>Situação</th>
+
+            <th style="width:230px;">Ações</th>
+
+        </tr>
+
+    </thead>
+
+    <tbody>
+
+@foreach (var item in Model)
+{
+        <tr>
+
+            <td>
+
+                📚 @item.Livro?.Titulo
+
+            </td>
+
+            <td>
+
+                👤 @item.Usuario?.Nome
+
+            </td>
+
+            <td>
+
+                @item.DataEmprestimo.ToString("dd/MM/yyyy")
+
+            </td>
+
+            <td>
+
+                @item.DataDevolucao.ToString("dd/MM/yyyy")
+
+            </td>
+
+            <td>
+
+                @if (item.Devolvido)
+                {
+                    <span class="badge bg-success">
+                        Devolvido
+                    </span>
+                }
+                else
+                {
+                    <span class="badge bg-warning text-dark">
+                        Emprestado
+                    </span>
+                }
+
+            </td>
+
+            <td>
+
+                <a asp-action="Edit"
+                   asp-route-id="@item.Id"
+                   class="btn btn-warning btn-sm">
+
+                    Editar
+
+                </a>
+
+                <a asp-action="Details"
+                   asp-route-id="@item.Id"
+                   class="btn btn-info btn-sm text-white">
+
+                    Detalhes
+
+                </a>
+
+                <a asp-action="Delete"
+                   asp-route-id="@item.Id"
+                   class="btn btn-danger btn-sm">
+
+                    Excluir
+
+                </a>
+
+            </td>
+
+        </tr>
+}
+
+    </tbody>
+
+</table>

@@ -1,0 +1,90 @@
+@model LibraTech.Models.Emprestimo
+
+@{
+    ViewData["Title"] = "Detalhes do Empréstimo";
+}
+
+<div class="container mt-4">
+
+    <div class="card shadow">
+
+        <div class="card-header bg-info text-white">
+
+            <h3 class="mb-0">
+                📖 Detalhes do Empréstimo
+            </h3>
+
+        </div>
+
+        <div class="card-body">
+
+            <table class="table">
+
+                <tr>
+                    <th style="width:250px;">Livro</th>
+                    <td>@Model.Livro?.Titulo</td>
+                </tr>
+
+                <tr>
+                    <th>Usuário</th>
+                    <td>@Model.Usuario?.Nome</td>
+                </tr>
+
+                <tr>
+                    <th>Data do Empréstimo</th>
+                    <td>@Model.DataEmprestimo.ToString("dd/MM/yyyy")</td>
+                </tr>
+
+                <tr>
+                    <th>Data da Devolução</th>
+                    <td>@Model.DataDevolucao.ToString("dd/MM/yyyy")</td>
+                </tr>
+
+                <tr>
+                    <th>Situação</th>
+
+                    <td>
+
+                        @if (Model.Devolvido)
+                        {
+                            <span class="badge bg-success">
+                                Devolvido
+                            </span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-warning text-dark">
+                                Emprestado
+                            </span>
+                        }
+
+                    </td>
+
+                </tr>
+
+            </table>
+
+            <div class="mt-4">
+
+                <a asp-action="Edit"
+                   asp-route-id="@Model.Id"
+                   class="btn btn-warning">
+
+                    Editar
+
+                </a>
+
+                <a asp-action="Index"
+                   class="btn btn-secondary">
+
+                    Voltar
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
