@@ -3,16 +3,15 @@ using LibraTech.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Configuração do banco SQLite
-builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlite("Data Source=LibraTech.db"));
+var dbPath = Path.Combine(builder.Environment.ContentRootPath, "LibraTech.db");
 
-// Add services to the container.
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseSqlite($"Data Source={dbPath}"));
+
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");

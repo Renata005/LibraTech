@@ -1,0 +1,141 @@
+html {
+    font-size: 14px;
+    height: 100%;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.btn:focus,
+.btn:active:focus,
+.btn-link.nav-link:focus,
+.form-control:focus,
+.form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+/* ===== Layout ===== */
+
+body {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+/* ===== Hero ===== */
+
+.hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 40px;
+    margin-bottom: 60px;
+}
+
+.hero-text {
+    width: 55%;
+}
+
+.hero-text h1 {
+    font-size: 55px;
+    font-weight: bold;
+    color: #0d6efd;
+}
+
+.hero-text h2 {
+    margin-top: 20px;
+    font-size: 32px;
+}
+
+.hero-text p {
+    margin-top: 20px;
+    color: #555;
+    font-size: 18px;
+}
+
+.hero-buttons {
+    margin-top: 35px;
+}
+
+.hero-buttons .btn {
+    margin-right: 15px;
+}
+
+.hero-image img {
+    width: 320px;
+}
+
+/* ===== Cards ===== */
+
+.feature-card {
+    display: block;
+    background: #fff;
+    border-radius: 15px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0,0,0,.08);
+    transition: .3s;
+    height: 100%;
+}
+
+.feature-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0,0,0,.15);
+}
+
+.feature-card .icon {
+    font-size: 50px;
+    margin-bottom: 15px;
+}
+
+.feature-card h3 {
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.feature-card p {
+    min-height: 60px;
+}
+
+/* ===== Navbar ===== */
+
+.navbar {
+    background: linear-gradient(90deg, #356AC3, #2F5FB3);
+}
+
+.navbar-brand {
+    color: white !important;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.navbar-nav .nav-link {
+    color: white !important;
+    margin-left: 10px;
+    border-radius: 8px;
+    transition: .3s;
+}
+
+.navbar-nav .nav-link:hover {
+    background: rgba(255,255,255,.15);
+}
+
+/* ===== Footer ===== */
+
+footer {
+    background: linear-gradient(90deg, #356AC3, #2F5FB3);
+    color: white !important;
+    padding: 15px;
+    margin-top: auto;
+}
+
+footer a {
+    color: white !important;
+}

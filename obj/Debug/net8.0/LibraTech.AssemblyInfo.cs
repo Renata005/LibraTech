@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("LibraTech")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+196a31f2c3fea1be49ebc7f4fd1c924e23f4bfdc")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+291357c61b3d96398f32582620efd1657aa36333")]
 [assembly: System.Reflection.AssemblyProductAttribute("LibraTech")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LibraTech")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
