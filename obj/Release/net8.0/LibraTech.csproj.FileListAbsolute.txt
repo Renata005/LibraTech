@@ -269,11 +269,6 @@ C:\Projetos\LibraTech\obj\Release\net8.0\LibraTech.RazorAssemblyInfo.cs
 C:\Projetos\LibraTech\obj\Release\net8.0\LibraTech.sourcelink.json
 C:\Projetos\LibraTech\obj\Release\net8.0\staticwebassets.build.json
 C:\Projetos\LibraTech\obj\Release\net8.0\staticwebassets.development.json
-C:\Projetos\LibraTech\obj\Release\net8.0\staticwebassets\msbuild.LibraTech.Microsoft.AspNetCore.StaticWebAssets.props
-C:\Projetos\LibraTech\obj\Release\net8.0\staticwebassets\msbuild.build.LibraTech.props
-C:\Projetos\LibraTech\obj\Release\net8.0\staticwebassets\msbuild.buildMultiTargeting.LibraTech.props
-C:\Projetos\LibraTech\obj\Release\net8.0\staticwebassets\msbuild.buildTransitive.LibraTech.props
-C:\Projetos\LibraTech\obj\Release\net8.0\staticwebassets.pack.json
 C:\Projetos\LibraTech\obj\Release\net8.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 C:\Projetos\LibraTech\obj\Release\net8.0\scopedcss\bundle\LibraTech.styles.css
 C:\Projetos\LibraTech\obj\Release\net8.0\scopedcss\projectbundle\LibraTech.bundle.scp.css
@@ -283,3 +278,12 @@ C:\Projetos\LibraTech\obj\Release\net8.0\refint\LibraTech.dll
 C:\Projetos\LibraTech\obj\Release\net8.0\LibraTech.pdb
 C:\Projetos\LibraTech\obj\Release\net8.0\LibraTech.genruntimeconfig.cache
 C:\Projetos\LibraTech\obj\Release\net8.0\ref\LibraTech.dll
+C:\Projetos\LibraTech\bin\Release\net8.0\LibraTech.staticwebassets.endpoints.json
+C:\Projetos\LibraTech\obj\Release\net8.0\rpswa.dswa.cache.json
+C:\Projetos\LibraTech\obj\Release\net8.0\rjimswa.dswa.cache.json
+C:\Projetos\LibraTech\obj\Release\net8.0\rjsmrazor.dswa.cache.json
+C:\Projetos\LibraTech\obj\Release\net8.0\rjsmcshtml.dswa.cache.json
+C:\Projetos\LibraTech\obj\Release\net8.0\staticwebassets.build.json.cache
+C:\Projetos\LibraTech\obj\Release\net8.0\staticwebassets.build.endpoints.json
+C:\Projetos\LibraTech\obj\Release\net8.0\swae.build.ex.cache
+C:\Projetos\LibraTech\obj\Release\net8.0\staticwebassets.upToDateCheck.txt
